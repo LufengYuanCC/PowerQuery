@@ -1,0 +1,21 @@
+let
+    Source = SharePoint.Contents("https://cpggpc.sharepoint.com/sites/CPCSPCCustomerCareAnalytics", [ApiVersion = 15]),
+    #"Shared Documents" = Source{[Name="Shared Documents"]}[Content]
+in
+    #"Shared Documents"
+-----------------------------------------------------------
+let
+    Source = SharePoint.Contents("https://cpggpc.sharepoint.com/sites/CPCSPCCustomerExperience", [ApiVersion = 15]),
+    #"Shared Documents" = Source{[Name="Shared Documents"]}[Content]
+in
+    #"Shared Documents"
+
+--------------------------------------------------------------
+let
+    Source = SharePoint.Contents("https://cpggpc.sharepoint.com/sites/CPCSPCCIAPowerBIDashboard", [ApiVersion = 15]),
+    #"Shared Documents" = Source{[Name="Shared Documents"]}[Content],
+    General = #"Shared Documents"{[Name="General"]}[Content]
+in
+    General
+
+--------------------------------------------------------
