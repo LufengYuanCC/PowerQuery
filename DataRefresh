@@ -1,0 +1,25 @@
+let
+    Source = DateTimeZone.UtcNow(),
+    UTCDate = Date.From(Source),
+    SecondSundayofMarch = let
+            Year = Date.Year(UTCDate),
+            FirstDayofMarch = #date(Year,3,1),
+            DayofWeek = if Date.DayOfWeek(FirstDayofMarch, Day.Sunday) = 0 then 7 else Date.DayOfWeek(FirstDayofMarch, Day.Sunday),
+            FirstSunday = Date.AddDays(FirstDayofMarch, (7-DayofWeek)),
+            SecondeSunday = Date.AddDays(FirstSunday,7)
+            in
+            SecondeSunday,
+    FirstSundayofNovember = let
+            Year = Date.Year(UTCDate),
+            FirstDayofMarch = #date(Year,11,1),
+            DayofWeek = if Date.DayOfWeek(FirstDayofMarch, Day.Sunday) = 0 then 7 else Date.DayOfWeek(FirstDayofMarch, Day.Sunday),
+            FirstSunday = Date.AddDays(FirstDayofMarch, (7-DayofWeek))
+            in
+            FirstSunday,
+    Offset = if UTCDate>=SecondSundayofMarch and UTCDate < FirstSundayofNovember then 4 else 5,
+    Custom1 = Source - #duration( 0,Offset,0,0),
+    #"Converted to Table" = #table(1, {{Custom1}}),
+    #"Renamed Columns" = Table.RenameColumns(#"Converted to Table",{{"Column1", "DateTime"}}),
+    #"Changed Type" = Table.TransformColumnTypes(#"Renamed Columns",{{"DateTime", type datetime}})
+in
+    #"Changed Type"
