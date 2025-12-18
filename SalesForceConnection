@@ -1,0 +1,5 @@
+let
+    Source = Salesforce.Data("https://canadapostcrmmarketing.my.salesforce.com", [ApiVersion=48]),
+    Onboarding_Request__c = Source{[Name="Onboarding_Request__c"]}[Data]
+in
+    Onboarding_Request__c
