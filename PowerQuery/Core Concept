@@ -1,0 +1,24 @@
+
+List
+
+{ }
+
+Record
+
+[ name = Lufeng, age = 48 ]
+
+Table
+
+
+
+Iterator
+	
+A function with a function as an input, usually is an integrator.
+like: 
+	addcolumne
+	table.transform
+
+function
+
+ each _  that equal to (_)=> 
+here _ is a input parameter and represent the current iterate item like current row, current record
