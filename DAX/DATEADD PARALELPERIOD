@@ -1,0 +1,9 @@
+DATA ADD      --- Keep   + Shift  ( keep the same period and shit it )
+PARALLEPERIOD --- Extent + Shift  ( first FIND the Max and Min of the period to extend to the whole period eg. whole month, then shift ) 
+
+Functions use DATEADD:
+  1. SAMEPERIODLASTYEAR  --- DATEADD('DATE'[DATE], -1, YEAR)
+  2. PREVIOUSEDAY        --- DATEADD(FIRSTDATE('DATE'[DATE], -1, DAY)
+    
+Functions use PARALLEPERIOD:
+  1. PREVIOUSYEAR  (NEXTYEAR0 --- PARALLELPERIOD(FIRSTDATE('DATE'[DATE']), -1 , YEAR)
